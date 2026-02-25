@@ -1,6 +1,7 @@
 package com.pdm.test;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,23 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    public int numeroContador;
+
+    //activity -> diseño|logica
+
+    //ciclo de vida de una activity ->
+
+    //onCreate: primer metodo que se ejecuta, sirve para inicializar los componentes
+    //onRestart: se llama despues de que se crea la aplicacion
+
+    //onResume: vuelve a interactuar con la activity, se ejecuta cada vez que se cambie de estado
+    //onPause: entra en hibernacion
+    //onStop: detiene la aplicacion
+    //onDestroy: finaliza la aplicacion al completo
+    //onConfiguration: cambia config de la app
+
+
+    //PRIMER METODO QUE SE EJECUTA AL INICIAR LA APP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +38,31 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Log.i("LIFE_CICLE", "ON CREATE"); //permite mostrar mensajes
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("LIFE_CICLE","ON START");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("LIFE_CICLE","ON PAUSE");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("LIFE_CICLE","ON RESUME");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("LIFE_CICLE","ON RESTART");
     }
 }
