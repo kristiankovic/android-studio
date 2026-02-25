@@ -2,6 +2,10 @@ package com.pdm.test;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int numeroContador;
+    public int numeroContador = 0;
+    public TextView contador;
+    public Button btnContar;
+    public Button btnRestar;
+
+
 
     //activity -> diseño|logica
 
@@ -40,6 +49,40 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.i("LIFE_CICLE", "ON CREATE"); //permite mostrar mensajes
+
+        // asociar las variables con el xml
+        this.btnContar = findViewById(R.id.btnContador);
+        this.btnRestar = findViewById(R.id.btnDecrementar);
+        this.contador  = findViewById(R.id.lblContador);
+
+        this.btnContar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //Log.i("LIFE_CICLE", "click on the button");
+                numeroContador++;
+
+                // asignar el numero del contador al lbl
+                contador.setText(String.valueOf(numeroContador));
+            }
+        });
+
+        this.btnRestar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                if (numeroContador != 0){
+                    numeroContador--;
+
+                    // asignar el numero del contador al lbl
+                    contador.setText(String.valueOf(numeroContador));
+                }
+
+                else{
+                    Toast.makeText(MainActivity.this, "Se alcanzo el valor mínimo.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
     }
 
     @Override
@@ -61,8 +104,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
+    protected void onDestroy() { // se ejecuta al cerrar la app
+        super.onDestroy();
+        Log.i("LIFE_CICLE","ON DESTROY");
+    }
+
+    @Override
+    protected void onRestart() { // va junto al start
         super.onRestart();
         Log.i("LIFE_CICLE","ON RESTART");
     }
+
 }
