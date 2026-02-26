@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Alumno alumno = new Alumno();
 
                 //Imprimir en pantalla
-                msgSaludo.setText(String.format("¡Bienvenido %s! \nTu registro con id: %s ha sido exitoso.", name, id));
+                msgSaludo.setText(String.format("¡Bienvenido %s! \n\nTu registro con id: %s ha sido exitoso.", name, id));
 
                 //Limpiar campos
                 studentName.setText("");
