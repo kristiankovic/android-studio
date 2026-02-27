@@ -21,8 +21,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    EditText nombre = (EditText) findViewById(R.id.txtNombre);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,6 +32,8 @@ public class MainActivity2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        EditText nombre = (EditText)findViewById(R.id.txtNombre);
 
         nombre.addTextChangedListener(new TextWatcher() {
             @Override
@@ -49,10 +49,10 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(count != 0){
+                /*if(count != 0){
                     Log.i("EVENTO", String.valueOf(s.charAt(start)));
                     Log.i("EVENTO", String.valueOf(s.charAt(before)));
-                }
+                }*/
             }
         });
 
@@ -65,21 +65,16 @@ public class MainActivity2 extends AppCompatActivity {
     // implicito -> sirven para operar fuera de la app
     public void openLayout(View view){
 
-        //TextView nombre = (TextView)findViewById(R.id.txtNombre);
-
-        //Bundle extras = new Bundle();
-        //extras.putString("nombre", nombre.getText().toString());
-
         // intencion de abrir otra vista
         Intent intent = new Intent(this, MainActivity.class); //actual, destino
-        //intent.putExtras(extras);
         startActivity(intent);
     }
 
     // debe recibir un parametro de tipo view
     public void saludar(View view) {
 
-        EditText txtSaludar = (EditText)findViewById(R.id.txtNombre);
+        EditText nombre = (EditText)findViewById(R.id.txtNombre);
+        Toast.makeText(this, nombre.getText(), Toast.LENGTH_SHORT).show();
 
         /*if (txtSaludar.getText().toString().isEmpty()){
             Drawable icon = ContextCompat.getDrawable(this, R.drawable.error_icon_foreground);
