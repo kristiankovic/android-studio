@@ -1,0 +1,6 @@
+com.op.contador.test.app-tracing-1.2.0-0 C:\Users\USER\.gradle\caches\9.2.1\transforms\2b6262aa0460486bb117b38ed3f3a6ca\workspace\transformed\tracing-1.2.0\res
+com.op.contador.test.app-core-1.7.0-1 C:\Users\USER\.gradle\caches\9.2.1\transforms\58b8dfe96801cf2540697aef30e52a72\workspace\transformed\core-1.7.0\res
+com.op.contador.test.app-updated_navigation_xml-2 C:\Users\USER\Desktop\android-studio\contador\app\build\generated\updated_navigation_xml\debugAndroidTest
+com.op.contador.test.app-packageDebugAndroidTestResources-3 C:\Users\USER\Desktop\android-studio\contador\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\merged.dir
+com.op.contador.test.app-packageDebugAndroidTestResources-4 C:\Users\USER\Desktop\android-studio\contador\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\stripped.dir
+com.op.contador.test.app-debugAndroidTest-5 C:\Users\USER\Desktop\android-studio\contador\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
