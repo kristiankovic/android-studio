@@ -38,7 +38,7 @@
         android:layout_width="258dp"
         android:layout_height="57dp"
         android:text="INCREMENTAR"
-        android:textSize="23dp"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.492"
@@ -48,11 +48,12 @@
 
     <TextView
         android:id="@+id/lblContador"
-        android:layout_width="83dp"
-        android:layout_height="48dp"
+        android:layout_width="111dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="99dp"
+        android:gravity="center"
         android:text="0"
-        android:textSize="20dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -65,12 +66,12 @@
         android:layout_width="258dp"
         android:layout_height="53dp"
         android:text="DECREMENTAR"
-        android:textSize="23dp"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintVertical_bias="0.517" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     public Button btnContar;
     public Button btnRestar;
 
-
-
     //activity -> diseño|logica
 
     //ciclo de vida de una activity ->
