@@ -21,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
+    public EditText nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
-        EditText nombre = (EditText)findViewById(R.id.txtNombre);
+        nombre = (EditText)findViewById(R.id.txtNombre);
 
         nombre.addTextChangedListener(new TextWatcher() {
             @Override
@@ -65,15 +66,19 @@ public class MainActivity2 extends AppCompatActivity {
     // implicito -> sirven para operar fuera de la app
     public void openLayout(View view){
 
+        String dataSend = nombre.getText().toString();
+
         // intencion de abrir otra vista
         Intent intent = new Intent(this, MainActivity.class); //actual, destino
+        intent.putExtra("nombre", dataSend);
+
         startActivity(intent);
     }
 
     // debe recibir un parametro de tipo view
     public void saludar(View view) {
 
-        EditText nombre = (EditText)findViewById(R.id.txtNombre);
+        nombre = (EditText)findViewById(R.id.txtNombre);
         Toast.makeText(this, nombre.getText(), Toast.LENGTH_SHORT).show();
 
         /*if (txtSaludar.getText().toString().isEmpty()){
