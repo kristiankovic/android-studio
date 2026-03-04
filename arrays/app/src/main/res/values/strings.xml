@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">arrays</string>
+
+    <!-- se debe tener claro que ira aqui -->
+
+    <string-array name="lista_departamentos">
+
+        <!-- opciones del array -->
+        <item>San Miguel</item>
+        <item>San Jacinto</item>
+        <item>San Jorge</item>
+        <item>San Juan Opico</item>
+
+    </string-array>
 </resources>
