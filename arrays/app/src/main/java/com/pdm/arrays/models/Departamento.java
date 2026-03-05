@@ -32,6 +32,6 @@ public class Departamento {
     @Override
     public String toString() {
         // esto se muestra en el front
-        return codigo;
+        return nombreDepa;
     }
 }

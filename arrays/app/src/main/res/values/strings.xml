@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">arrays</string>
+    <string name="msg">NUEVO DEPARTAMENTO</string>
+    <string name="nombre_departamento">Nombre</string>
+    <string name="codigo_departamento">Codigo</string>
+    <string name="msgBtn">Guardar</string>
 
-    <!-- se debe tener claro que ira aqui -->
+    <!-- se debe tener claro que irá aquí -->
 
     <string-array name="lista_departamentos">
 

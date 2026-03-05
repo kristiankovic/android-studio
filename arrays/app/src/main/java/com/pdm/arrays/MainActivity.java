@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,14 +22,14 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    // spiners -> cada posicion del spiner retorna algo y funciona como un indice
+    // spinners -> cada posicion del spinner retorna algo y funciona como un indice
 
     public Spinner spinnerDep;
-    public Spinner spinnerDep1;
     public ArrayList<String> listaNombres;
 
     // arraylist q almacena obj departamentos
     public ArrayList<Departamento> dataDep;
+    public ArrayAdapter<Departamento> datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +41,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataDep = new ArrayList<>();
-        dataDep.add(new Departamento("101", "San Miguel"));
-        dataDep.add(new Departamento("102", "La Union"));
+        dataDep.add(new Departamento( "San Miguel", "101"));
+        dataDep.add(new Departamento("La Union", "102"));
 
         // vivo con el bug
         spinnerDep = findViewById(R.id.spDep);
 
-        // los lee ya de una fuente que esta en el xml
+        // primera forma de llenar con datos (desde recursos XML):
+
+        // uso de listas estaticas definidas en strings.xml
+        // ArrayAdapter: renderiza los datos del arrayList y los convierte en vistas individuales
+
+        //contexto, layout del item, fuente de datos
         ArrayAdapter<CharSequence> data = ArrayAdapter.createFromResource(this, R.array.lista_departamentos, android.R.layout.simple_spinner_item);
         data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // adapters ->
         //spinnerDep.setAdapter(data);
-
 
         // usando el constructor
         listaNombres = new ArrayList<>();
@@ -66,7 +71,10 @@ public class MainActivity extends AppCompatActivity {
         // adaptador
         //ArrayAdapter<String> datos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listaNombres);
 
-        ArrayAdapter<Departamento> datos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dataDep);
+        // segunda forma de llenar con datos (desde codigo):
+
+        // uso de los ArrayAdapter vinculado al ArrayList
+        datos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dataDep);
         datos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDep.setAdapter(datos);
 
@@ -86,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 // para capturar todo el objeto
                 Departamento dep = (Departamento)adapterView.getItemAtPosition(i);
 
-                Toast.makeText(MainActivity.this, "Codigo Departamento: " + dep.getNombreDepa(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Codigo Departamento: " + dep.getCodigo(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -94,5 +102,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    // metodo para agregar un nuevo elemento
+    public void add(View view) {
+
+        // linkear las variables
+        EditText txtNombre = (EditText)findViewById(R.id.txtNombre);
+        EditText txtCodigo = (EditText)findViewById(R.id.txtCodigo);
+
+        // instanciar el nuevo objeto
+        Departamento nuevo = new Departamento();
+
+        // obtener el texto de cada campo con .getText() y convertirlo
+        nuevo.setNombreDepa(txtNombre.getText().toString());
+        nuevo.setCodigo(txtCodigo.getText().toString());
+
+        // agregar el objeto nuevo al ArrayList
+        dataDep.add(nuevo);
+
+        // notificar al adapter el nuevo cambio
+        datos.notifyDataSetChanged();
+
+        // limpiar los campos
+        txtNombre.setText("");
+        txtCodigo.setText("");
     }
 }
