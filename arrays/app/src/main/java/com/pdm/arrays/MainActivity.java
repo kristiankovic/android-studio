@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     // arraylist q almacena obj departamentos
     public ArrayList<Departamento> dataDep;
-    public ArrayAdapter<Departamento> datos;
+    public ArrayAdapter<Departamento> dataArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         // ArrayAdapter: renderiza los datos del arrayList y los convierte en vistas individuales
 
         //contexto, layout del item, fuente de datos
-        ArrayAdapter<CharSequence> data = ArrayAdapter.createFromResource(this, R.array.lista_departamentos, android.R.layout.simple_spinner_item);
-        data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> dataXML = ArrayAdapter.createFromResource(this, R.array.lista_departamentos, android.R.layout.simple_spinner_item);
+        dataXML.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // adapters ->
         //spinnerDep.setAdapter(data);
@@ -69,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
         listaNombres.add("La Perla");
 
         // adaptador
-        //ArrayAdapter<String> datos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listaNombres);
+        ArrayAdapter<String> dataStrings = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listaNombres);
 
         // segunda forma de llenar con datos (desde codigo):
 
         // uso de los ArrayAdapter vinculado al ArrayList
-        datos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dataDep);
-        datos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDep.setAdapter(datos);
+        dataArray = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dataDep);
+        dataArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDep.setAdapter(dataArray);
 
         // sale del contexto de la app y entra en la de layout
         spinnerDep.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 //String selectedIndex = listaNombres.get(i);
                 //String selectedIndex2 = spinnerDep.getSelectedItem().toString();
 
-                // para capturar todo el objeto
+                // obtener el objeto seleccionado dentro del Spinner y castearlo
                 Departamento dep = (Departamento)adapterView.getItemAtPosition(i);
 
                 Toast.makeText(MainActivity.this, "Codigo Departamento: " + dep.getCodigo(), Toast.LENGTH_SHORT).show();
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         dataDep.add(nuevo);
 
         // notificar al adapter el nuevo cambio
-        datos.notifyDataSetChanged();
+        dataArray.notifyDataSetChanged();
 
         // limpiar los campos
         txtNombre.setText("");
