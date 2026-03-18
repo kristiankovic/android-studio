@@ -4,13 +4,15 @@ public class Estudiante {
 
     public String nombre;
     public String carnet;
+    public String genero;
 
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, String carnet) {
+    public Estudiante(String nombre, String carnet, String genero) {
         this.nombre = nombre;
         this.carnet = carnet;
+        this.genero = genero;
     }
 
     public String getNombre() {
@@ -29,8 +31,16 @@ public class Estudiante {
         this.carnet = carnet;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     @Override
     public String toString() {
-        return nombre + " || " + carnet;
+        return nombre + " | " + carnet;
     }
 }

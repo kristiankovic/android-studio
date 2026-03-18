@@ -1,11 +1,15 @@
 package com.pdm.practica;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     public TextView txtNombre, txtCarnet;
     public ArrayList<Estudiante> srcData;
     public ArrayAdapter<Estudiante> adapter;
+    public ArrayAdapter<String> adapterString;
+    public ArrayList<String> srcDataString;
+    public ListView dataList;
+    public ArrayList<Estudiante> srcDataEstudiante;
+    public ArrayAdapter<Estudiante> adapterEstudiante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,44 +47,68 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // inicializacion de campos
         btnGuardar = (Button)findViewById(R.id.btnGuardar);
         spInfo     = (Spinner)findViewById(R.id.spInfo);
         txtNombre  = (TextView)findViewById(R.id.txtNombre);
         txtCarnet  = (TextView)findViewById(R.id.txtCarnet);
+        //dataList   = (ListView)findViewById(R.id.dataList);
 
+        // inicializacion de contenedores de informacion
         srcData = new ArrayList<>();
+
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, srcData);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spInfo.setAdapter(adapter);
+        //spInfo.setAdapter(adapter);
 
-        srcData.add(new Estudiante("Cristian Ventura", "VV23011"));
-        srcData.add(new Estudiante("María López", "ML23012"));
-        srcData.add(new Estudiante("José Martínez", "JM23013"));
-        srcData.add(new Estudiante("Ana González", "AG23014"));
-        srcData.add(new Estudiante("Luis Hernández", "LH23015"));
-        srcData.add(new Estudiante("Carla Ramírez", "CR23016"));
-        srcData.add(new Estudiante("Pedro Castillo", "PC23017"));
-        srcData.add(new Estudiante("Sofía Torres", "ST23018"));
-        srcData.add(new Estudiante("Diego Cruz", "DC23019"));
-        srcData.add(new Estudiante("Valeria Morales", "VM23020"));
+        srcDataEstudiante = new ArrayList<>();
 
+        adapterEstudiante = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, srcDataEstudiante);
+        dataList.setAdapter(adapterEstudiante);
+
+        srcDataString = new ArrayList<>();
+        srcDataString.add("Masculino");
+        srcDataString.add("Femenino");
+
+        adapterString = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, srcDataString);
+        spInfo.setAdapter(adapterString);
     }
 
     public void guardarRegistro(View view) {
 
         txtNombre   = (TextView) findViewById(R.id.txtNombre);
         txtCarnet   = (TextView) findViewById(R.id.txtCarnet);
+        spInfo      = (Spinner)findViewById(R.id.spInfo);
+        String genero = spInfo.getSelectedItem().toString();
 
         Estudiante e = new Estudiante();
 
-        e.setNombre(txtNombre.getText().toString());
-        e.setCarnet(txtCarnet.getText().toString());
+        if(txtNombre.getText().toString().isEmpty() || txtCarnet.getText().toString().isEmpty()){
+            Toast.makeText(this, "Hay campos vacios", Toast.LENGTH_LONG).show();
+        }
 
-        srcData.add(e);
+        else{
+            e.setNombre(txtNombre.getText().toString());
+            e.setCarnet(txtCarnet.getText().toString());
+            e.setGenero(genero);
 
-        adapter.notifyDataSetChanged();
+            srcDataEstudiante.add(e);
 
-        txtNombre.setText("");
-        txtCarnet.setText("");
+            adapterEstudiante.notifyDataSetChanged();
+
+            txtNombre.setText("");
+            txtCarnet.setText("");
+        }
+    }
+
+    public void abrirHistorial(View view) {
+
+        Intent intento = new Intent(MainActivity.this, MainActivity2.class);
+
+        intento.putExtra("data", srcDataEstudiante);
+
+        startActivity(intento);
+
+
     }
 }

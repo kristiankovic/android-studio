@@ -20,7 +20,7 @@
             android:layout_margin="10dp"
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:ems="10"
             android:hint="Ingrese su nombre"
             android:inputType="text" />
@@ -29,24 +29,33 @@
             android:layout_margin="10dp"
             android:id="@+id/txtCarnet"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:ems="10"
             android:inputType="text"
             android:hint="Ingrese su carnet" />
 
-        <Button
-            android:layout_margin="10dp"
-            android:id="@+id/btnGuardar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="guardarRegistro"
-            android:text="Guardar" />
-
         <Spinner
             android:id="@+id/spInfo"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="55dp"
             android:layout_margin="10dp"
             android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="guardarRegistro"
+            android:text="Guardar" />
+
+        <Button
+            android:id="@+id/btnNuevaVista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Ver Registros Guardados"
+            android:onClick="abrirHistorial"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
