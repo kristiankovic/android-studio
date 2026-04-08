@@ -5,8 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,15 +24,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public ListView lsProductosVendidos;
-    public ArrayAdapter<ProductoComprado> adapterProductosComprados;
     public Spinner spProductos;
     public ArrayList<Producto> srcData;
     public ArrayAdapter<Producto> adapter;
     public EditText txtCantidad;
-    public TextView txtTotal, txtConversion;
+    public TextView txtTotal;
     public ArrayList<ProductoComprado> productosComprados;
-    public float total;
+    public Button btnComprar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +43,10 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        spProductos = (Spinner)findViewById(R.id.spProductos);
+        spProductos = findViewById(R.id.spProductos);
+        btnComprar  = findViewById(R.id.btnAgregar);
 
         productosComprados = new ArrayList<>();
-
-        txtConversion = (TextView)findViewById(R.id.txtConversion);
-        txtCantidad = (EditText)findViewById(R.id.txtCantidad);
-        txtTotal = (TextView)findViewById(R.id.txtTotal);
-        txtConversion = (TextView)findViewById(R.id.txtConversion);
-        lsProductosVendidos = (ListView)findViewById(R.id.lsProductosVendidos);
 
         srcData = new ArrayList<>();
         srcData.add(new Producto("Cemento", 8.50f));
@@ -64,46 +57,37 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, srcData);
         spProductos.setAdapter(adapter);
 
-        adapterProductosComprados = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, productosComprados);
-        lsProductosVendidos.setAdapter(adapterProductosComprados);
-
         // iteracion de los productos guardados
 
     }
 
     public void venta(View view) {
 
+        txtCantidad = (EditText)findViewById(R.id.txtCantidad);
+
         if(txtCantidad.getText().toString().isEmpty()) {
             txtCantidad.setError("Este campo es obligatorio");
         }
 
         else{
+
+            txtTotal = (TextView)findViewById(R.id.txtTotal);
+
             int cantidad = Integer.parseInt(txtCantidad.getText().toString());
 
             Producto pTemp = (Producto) spProductos.getSelectedItem();
 
-            total += cantidad * pTemp.getPrecio();
+            float total = cantidad * pTemp.getPrecio();
 
             // guardar los productos comprados en un arreglo
-            productosComprados.add(new ProductoComprado(pTemp, cantidad * pTemp.getPrecio()));
-            adapterProductosComprados.notifyDataSetChanged();
+            productosComprados.add(new ProductoComprado(pTemp, total));
 
             txtTotal.setText("Total de la venta $" + total);
             //Toast.makeText(this, String.valueOf(total), Toast.LENGTH_SHORT).show();
 
             txtCantidad.setText("");
+
+            Log.i("TOTAL_VENTA", "Producto: " + pTemp.nombre + " | Total: $" + total);
         }
-    }
-
-    public void conversionEuro(View view){
-        txtConversion.setText(String.format("%.1f", total * 0.87f));
-    }
-
-    public void conversionPesoMexicano(View view){
-        txtConversion.setText(String.format("%.1f",total * 17.81f));
-    }
-
-    public void conversionQuetzal(View view){
-        txtConversion.setText(String.format("%.1f", total * 7.79f));
     }
 }

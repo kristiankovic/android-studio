@@ -15,9 +15,4 @@ public class ProductoComprado extends Producto{
         this.productoComprado = productoComprado;
         this.total = total;
     }
-
-    @Override
-    public String toString() {
-        return productoComprado.getNombre() + " - $" + total;
-    }
 }
