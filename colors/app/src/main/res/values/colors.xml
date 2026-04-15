@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="blue">#2196f3</color>
+    <color name="purple">#9c27b0</color>
+    <color name="green">#1b5e20</color>
+    <color name="orange">#ff5722</color>
+    <color name="red">#f44336</color>
+    <color name="indigo">#3f51b5</color>
+    <color name="deep_purple">#673ab7</color>
+    <color name="light_green">#689f38</color>
+    <color name="teal">#009688</color>
+    <color name="pink">#e91e63</color>
+
+    <array name="initial_colors">
+        <item>#2196f3</item> <!-- blue -->
+        <item>#9c27b0</item> <!-- purple -->
+        <item>#1b5e20</item> <!-- green -->
+        <item>#ff5722</item> <!-- orange -->
+        <item>#f44336</item> <!-- red -->
+        <item>#3f51b5</item> <!-- indigo -->
+        <item>#673ab7</item> <!-- deep_purple -->
+        <item>#689f38</item> <!-- light_green -->
+        <item>#009688</item> <!-- teal -->
+        <item>#e91e63</item> <!-- pink -->
+        <item>#2196f3</item> <!-- blue -->
+        <item>#9c27b0</item> <!-- purple -->
+        <item>#1b5e20</item> <!-- green -->
+        <item>#ff5722</item> <!-- orange -->
+        <item>#f44336</item> <!-- red -->
+        <item>#3f51b5</item> <!-- indigo -->
+        <item>#673ab7</item> <!-- deep_purple -->
+        <item>#689f38</item> <!-- light_green -->
+        <item>#009688</item> <!-- teal -->
+        <item>#e91e63</item> <!-- pink -->
+    </array>
+</resources>

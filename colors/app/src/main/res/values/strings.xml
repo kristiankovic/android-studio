@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">colors</string>
+
+    <array name="names_array">
+        <item>Juan</item>
+        <item>Jose</item>
+        <item>Maria</item>
+        <item>Lucas</item>
+        <item>Ana</item>
+        <item>Carlos</item>
+        <item>Pedro</item>
+        <item>Luisa</item>
+        <item>Diego</item>
+        <item>Sofia</item>
+        <item>Andres</item>
+        <item>Valeria</item>
+        <item>Fernando</item>
+        <item>Camila</item>
+        <item>Ricardo</item>
+        <item>Paola</item>
+        <item>Jorge</item>
+        <item>Gabriela</item>
+        <item>Manuel</item>
+        <item>Patricia</item>
+        <item>Esteban</item>
+        <item>Daniela</item>
+        <item>Alberto</item>
+        <item>Monica</item>
+        <item>Rafael</item>
+        <item>Claudia</item>
+        <item>Hector</item>
+        <item>Veronica</item>
+        <item>Julio</item>
+        <item>Carolina</item>
+        <item>Felipe</item>
+        <item>Isabel</item>
+        <item>Oscar</item>
+        <item>Teresa</item>
+        <item>Victor</item>
+        <item>Patricio</item>
+        <item>Martina</item>
+        <item>Alonso</item>
+        <item>Florencia</item>
+        <item>Emilio</item>
+        <item>Rosa</item>
+        <item>Ignacio</item>
+        <item>Elena</item>
+        <item>Mateo</item>
+        <item>Daniel</item>
+        <item>Laura</item>
+        <item>Antonio</item>
+        <item>Beatriz</item>
+        <item>Francisco</item>
+    </array>
+</resources>
