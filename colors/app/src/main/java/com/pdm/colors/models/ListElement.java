@@ -1,6 +1,8 @@
 package com.pdm.colors.models;
 
-public class ListElement {
+import java.io.Serializable;
+
+public class ListElement implements Serializable {
 
     public String color;
     public String name;
