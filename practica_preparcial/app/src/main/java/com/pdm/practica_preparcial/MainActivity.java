@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.pdm.practica_preparcial.models.CustomAdapter;
 import com.pdm.practica_preparcial.models.Producto;
 import com.pdm.practica_preparcial.models.ProductoModel;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
     public ListView lvProductos;
     public ArrayList<Producto> data;
-    public ProductoModel adapter;
+    public CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ import java.util.ArrayList;
 
         //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
 
-        adapter = new ProductoModel(this, data);
+        adapter = new CustomAdapter(this, data);
 
         lvProductos.setAdapter(adapter);
 

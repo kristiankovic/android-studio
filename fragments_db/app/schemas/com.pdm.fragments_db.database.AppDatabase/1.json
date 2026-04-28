@@ -1,0 +1,88 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "5455f37970d126c2114ba95d41505a8c",
+    "entities": [
+      {
+        "tableName": "estudiantes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idEstudiante` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre_estudiante` TEXT, `carrera_estudiante` TEXT, `carnet_estudiante` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "idEstudiante",
+            "columnName": "idEstudiante",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre_estudiante",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "carrera",
+            "columnName": "carrera_estudiante",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "carnet",
+            "columnName": "carnet_estudiante",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idEstudiante"
+          ]
+        }
+      },
+      {
+        "tableName": "materias",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idMateria` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idEstudiante` INTEGER NOT NULL, `nombre_materia` TEXT, FOREIGN KEY(`idEstudiante`) REFERENCES `estudiantes`(`idEstudiante`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "idMateria",
+            "columnName": "idMateria",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idEstudiante",
+            "columnName": "idEstudiante",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre_materia",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idMateria"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "estudiantes",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idEstudiante"
+            ],
+            "referencedColumns": [
+              "idEstudiante"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5455f37970d126c2114ba95d41505a8c')"
+    ]
+  }
+}
