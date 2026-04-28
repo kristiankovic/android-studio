@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.pdm.colors.MainActivity;
 import com.pdm.colors.R;
 import com.pdm.colors.models.ListElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
@@ -60,7 +62,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(view -> {
 
             Intent intento = new Intent(view.getContext(), EditContact.class);
-            intento.putExtra("nombre", item.getName());
+            intento.putExtra("contacto", (Serializable) item);
+            intento.putExtra("posicion", position);
             context.startActivity(intento);
         });
     }
@@ -74,16 +77,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
         ImageView icon;
         TextView name, city, number, status;
-        EditText txtNombre, txtCiudad, txtTelefono;
-        Button btnConfirmar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            txtCiudad = itemView.findViewById(R.id.etCiudad);
-            txtTelefono = itemView.findViewById(R.id.etTelefono);
-            btnConfirmar = itemView.findViewById(R.id.button);
-
             icon = itemView.findViewById(R.id.icon);
             name = itemView.findViewById(R.id.name);
             city = itemView.findViewById(R.id.city);
