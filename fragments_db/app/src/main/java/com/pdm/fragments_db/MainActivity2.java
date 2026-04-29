@@ -20,9 +20,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pdm.fragments_db.database.AppDatabase;
 import com.pdm.fragments_db.entities.Estudiante;
 
-import java.util.List;
-import java.util.Objects;
-
 public class MainActivity2 extends AppCompatActivity {
     private AppDatabase db;
     public TextInputEditText txtNombre, txtCarrera, txtCarnet;
