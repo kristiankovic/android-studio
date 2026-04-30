@@ -19,6 +19,12 @@ public interface EstudianteDAO {
     @Query("SELECT * FROM estudiantes")
     List<Estudiante> getEstudiantes();
 
+    @Query("UPDATE estudiantes SET nombre_estudiante=:nombre, carrera_estudiante=:carrera, carnet_estudiante=:carnet WHERE idEstudiante=:id")
+    int updateEstudiante(String nombre, String carrera, String carnet, int id);
+
+    @Delete
+    int removeEstudiante(Estudiante estudiante);
+
     @Update
     int updateEstudiante(Estudiante estudiante);
 

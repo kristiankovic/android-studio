@@ -35,6 +35,14 @@ public class MainActivity2 extends AppCompatActivity {
         txtNombre = findViewById(R.id.txtNombre);
         txtCarrera = findViewById(R.id.txtCarrera);
         txtCarnet = findViewById(R.id.txtCarnet);
+
+        Intent data = getIntent();
+
+        if(data != null){
+            txtNombre.setText(data.getStringExtra("nombre"));
+            txtCarrera.setText(data.getStringExtra("carrera"));
+            txtCarnet.setText(data.getStringExtra("carnet"));
+        }
     }
 
     public void layout(){
@@ -67,6 +75,14 @@ public class MainActivity2 extends AppCompatActivity {
 
             AppDatabase.dataWriterExecutor.execute(() -> {
 
+                Intent intent = getIntent();
+
+                if(intent.hasExtra("id")){
+                    int id = intent.getIntExtra("id", -1);
+                    db.estudianteDAO().updateEstudiante(nombre, carrera, carnet, id);
+                }
+
+                else {
                     Estudiante e = new Estudiante();
 
                     e.nombre = nombre;
@@ -74,6 +90,7 @@ public class MainActivity2 extends AppCompatActivity {
                     e.carnet = carnet;
 
                     db.estudianteDAO().insertEstudiante(e);
+                }
 
                 runOnUiThread(() -> {
                     Intent data = new Intent();

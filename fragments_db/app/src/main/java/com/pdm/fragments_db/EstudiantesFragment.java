@@ -84,7 +84,14 @@ public class EstudiantesFragment extends Fragment {
             data = db.estudianteDAO().getEstudiantes();
 
             requireActivity().runOnUiThread(() -> {
-                adapter = new CustomAdapter(getContext(), data);
+                adapter = new CustomAdapter(getContext(), data, (estudiante) -> {
+                    Intent intento = new Intent(getContext(), MainActivity2.class);
+                    intento.putExtra("id", estudiante.idEstudiante);
+                    intento.putExtra("nombre", estudiante.nombre);
+                    intento.putExtra("carrera", estudiante.carrera);
+                    intento.putExtra("carnet", estudiante.carnet);
+                    launcher.launch(intento);
+                });
                 rvEstudiantes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                 rvEstudiantes.setAdapter(adapter);
             });
