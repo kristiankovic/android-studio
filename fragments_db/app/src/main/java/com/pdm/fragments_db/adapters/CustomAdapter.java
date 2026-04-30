@@ -82,7 +82,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                             data.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, data.size());
-                            Toast.makeText(contexto, "Estudiante eliminado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Estudiante eliminado", Toast.LENGTH_SHORT).show();
                         });
 
                     });
