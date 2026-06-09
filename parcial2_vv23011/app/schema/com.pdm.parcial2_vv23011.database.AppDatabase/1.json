@@ -1,0 +1,94 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "4b9f92ee1e0d346393e8075578e29863",
+    "entities": [
+      {
+        "tableName": "recetas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idReceta` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre_receta` TEXT, `descripcion_receta` TEXT, `porciones_receta` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "idReceta",
+            "columnName": "idReceta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre_receta",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion_receta",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "porciones",
+            "columnName": "porciones_receta",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idReceta"
+          ]
+        }
+      },
+      {
+        "tableName": "ingredientes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idIngrediente` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idReceta` INTEGER NOT NULL, `nombre_ingrediente` TEXT, `cantidad_ingrediente` TEXT, FOREIGN KEY(`idReceta`) REFERENCES `recetas`(`idReceta`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idIngrediente",
+            "columnName": "idIngrediente",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idReceta",
+            "columnName": "idReceta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre_ingrediente",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "cantidad",
+            "columnName": "cantidad_ingrediente",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idIngrediente"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "recetas",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idReceta"
+            ],
+            "referencedColumns": [
+              "idReceta"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4b9f92ee1e0d346393e8075578e29863')"
+    ]
+  }
+}

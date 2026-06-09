@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">parcial2_vv23011</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="credits">Este proyecto fue creado por Cristian Alexis Ventura - VV23011, todos los derechos reservados</string>
+</resources>
